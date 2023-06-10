@@ -25,10 +25,10 @@ Team F
 
 ## Roles and responsibilities for Deliverable 1
 
-|Name/Problem                        |Research          |Ideation |Sonar Operation|Disccusion|Documentation|
+|Name/Problem                        |Research          |Ideation |Code Quality Checks|Disccusion|Documentation|
 |:----------------------------------:|:----------------:|:-------:|:-------------:|:--------:|:-----------:|
-|Preet Angad Singh Nanda             |✔                 |✔       |               |✔          |✔            |
-|Varun Pandey                        |✔                 |✔         |               |✔         |✔             | 
+|Preet Angad Singh Nanda             |✔                 |✔       |✔               |✔          |✔            |
+|Varun Pandey                        |✔                 |✔         |✔               |✔         |✔             | 
 |Mir Pankaj Pasad                    |✔                 |✔         |✔             |✔          |✔           |
-|Mahavir Patel                       |✔                 |✔         |               |✔         |✔            |
+|Mahavir Patel                       |✔                 |✔         |✔               |✔         |✔            |
 
