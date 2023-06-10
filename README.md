@@ -17,7 +17,7 @@ Team F
 | Name  | Student ID | E-mail |
 |-------|------------|--------|
 |Preet Angad Singh Nanda | 40234930 | preetangad107@gmail.com |
-|Varun Pandey | ********* | varunpne@gmail.com |
+|Varun Pandey | 40225320 | varunpne@gmail.com |
 |Mir Pankaj Pasad | ********* | pasadmir2000@gmail.com |
 |Mahavir Patel | 40198619 | mahavirpatel0@gmail.com |
 
