@@ -32,3 +32,6 @@ Team F
 |Mir Pankaj Pasad                    |✔                 |✔         |✔             |✔          |✔           |
 |Mahavir Patel                       |✔                 |✔         |✔               |✔         |✔            |
 
+## TeamScale 
+
+![](Initial Findings - TeamScale/Initial Findings.png)
