@@ -34,6 +34,6 @@ Team F
 
 ## TeamScale 
 
-# Before Refactoring
+### Before Refactoring
 
 ![](TeamScale/Initial_Findings.png)
