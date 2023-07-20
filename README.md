@@ -34,4 +34,4 @@ Team F
 
 ## TeamScale 
 
-![](Initial Findings - TeamScale/Initial Findings.png)
+![](TeamScale/Initial_Findings.png)
