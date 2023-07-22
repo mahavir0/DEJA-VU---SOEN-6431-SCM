@@ -59,13 +59,14 @@ public class DeleteLoginIdFrame extends JFrame {
 							JOptionPane.INFORMATION_MESSAGE
 						);
 					dispose();
-				} else
+				} else {
 					JOptionPane.showMessageDialog(
 							null,
 							"Wrong username or password",
 							"Deletion Failed",
 							JOptionPane.ERROR_MESSAGE
 						);
+				}
 			}
 		});
 	}

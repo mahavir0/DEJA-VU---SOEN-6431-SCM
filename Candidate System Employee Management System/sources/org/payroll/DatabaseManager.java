@@ -199,8 +199,9 @@ public class DatabaseManager {
 		try {
 			ResultSet rs = curs.executeQuery("SELECT net_salary FROM departments WHERE dep_name=\"" + dep_name + "\"");
 			
-			if (rs.next())
+			if (rs.next()) {
 				return rs.getInt("net_salary");
+			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		}

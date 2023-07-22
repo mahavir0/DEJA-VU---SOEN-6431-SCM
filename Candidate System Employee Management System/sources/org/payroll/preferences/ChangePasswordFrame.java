@@ -58,8 +58,8 @@ public class ChangePasswordFrame extends JFrame {
 		
 		btn_OK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (Main.dbManager.verifyLoginId(username, new String(txt_oldPassword.getPassword())))
-					if (Arrays.equals(txt_newPassword.getPassword(), txt_repeatPassword.getPassword()))
+				if (Main.dbManager.verifyLoginId(username, new String(txt_oldPassword.getPassword()))) {
+					if (Arrays.equals(txt_newPassword.getPassword(), txt_repeatPassword.getPassword())) {
 						if (isStrongPassword(new String(txt_newPassword.getPassword()))) {
 							Main.dbManager.changePassword(username, new String(txt_newPassword.getPassword()));
 							setVisible(false);
@@ -69,27 +69,30 @@ public class ChangePasswordFrame extends JFrame {
 									"Password changed",
 									JOptionPane.INFORMATION_MESSAGE
 								);
-						} else
+						} else {
 							JOptionPane.showMessageDialog(
 									null,
 									"Password not strong enough",
 									"Weak Password",
 									JOptionPane.ERROR_MESSAGE
 								);
-					else
+						}
+					} else {
 						JOptionPane.showMessageDialog(
 								null,
 								"Password don't match",
 								"Password Error",
 								JOptionPane.ERROR_MESSAGE
 							);
-				else
+					}
+				} else {
 					JOptionPane.showMessageDialog(
 							null,
 							"Invalid Login ID",
 							"Invalid Login ID",
 							JOptionPane.ERROR_MESSAGE
 						);
+				}
 			}
 		});
 	}
@@ -109,8 +112,9 @@ public class ChangePasswordFrame extends JFrame {
 		if ((password.length() > 6) &&
 			(containsUppercase(password)) &&
 			(containsLowercase(password)) &&
-			(containsNumbers(password)))
+			(containsNumbers(password))) {
 			return true;
+		}
 		
 		return false;
 	}
@@ -118,8 +122,9 @@ public class ChangePasswordFrame extends JFrame {
 	Boolean containsUppercase(String password) {
 		for (int i=0; i<password.length(); i++) {
 			for (int j=0; j<uppercase_alphabets.length(); j++) {
-				if (password.charAt(i) == uppercase_alphabets.charAt(j))
+				if (password.charAt(i) == uppercase_alphabets.charAt(j)) {
 					return true;
+				}
 			}
 		}
 		return false;
@@ -128,8 +133,9 @@ public class ChangePasswordFrame extends JFrame {
 	Boolean containsLowercase(String password) {
 		for (int i=0; i<password.length(); i++) {
 			for (int j=0; j<lowercase_alphabets.length(); j++) {
-				if (password.charAt(i) == lowercase_alphabets.charAt(j))
+				if (password.charAt(i) == lowercase_alphabets.charAt(j)) {
 					return true;
+				}
 			}
 		}
 		return false;
@@ -138,8 +144,9 @@ public class ChangePasswordFrame extends JFrame {
 	Boolean containsNumbers(String password) {
 		for (int i=0; i<password.length(); i++) {
 			for (int j=0; j<numbers.length(); j++) {
-				if (password.charAt(i) == numbers.charAt(j))
+				if (password.charAt(i) == numbers.charAt(j)) {
 					return true;
+				}
 			}
 		}
 		return false;

@@ -3,7 +3,7 @@ package org.payroll;
 // Loader Class
 public class Main {
 	
-	public static DatabaseManager dbManager;	// shared database manager
+	public static DatabaseManager dbManager = null;	// shared database manager
 	
 	public static void main(String[] args) {
 		dbManager = new DatabaseManager("employee_payroll_system");
