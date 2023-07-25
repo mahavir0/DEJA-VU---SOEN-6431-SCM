@@ -75,20 +75,10 @@ public class ModifyDepartmentFrame extends JFrame {
 					if (Main.dbManager.existsDepartment(dep_name)) {
 						Main.dbManager.updateDepartment(dep_name, basic_salary, da, hra, pf);
 						setVisible(false);
-						JOptionPane.showMessageDialog(
-								null,
-								"Updated department settings",
-								"Department updated",
-								JOptionPane.INFORMATION_MESSAGE
-							);
+						JOptionPane.showMessageDialog(null,"Updated department settings","Department updated",JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(
-								null,
-								"Department does not exist",
-								"Department does not exist exist",
-								JOptionPane.ERROR_MESSAGE
-							);
+						JOptionPane.showMessageDialog(null,"Department does not exist","Department does not exist exist",JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
 					System.err.println(e1.getMessage());

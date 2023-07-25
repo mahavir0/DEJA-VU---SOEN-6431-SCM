@@ -54,7 +54,6 @@ public class NewLoginIdFrame extends JFrame {
 				dispose();
 			}
 		});
-		
 		btn_create.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (isUsernameValid()) {
@@ -63,45 +62,12 @@ public class NewLoginIdFrame extends JFrame {
 							if (isStrongPassword()) {
 								Main.dbManager.createLoginId(txt_username.getText(), new String(txt_newPassword.getPassword()));
 								setVisible(false);
-								JOptionPane.showMessageDialog(
-										null,
-										"New Login ID created successfully",
-										"New Login ID Created",
-										JOptionPane.INFORMATION_MESSAGE
-									);
+								JOptionPane.showMessageDialog(null,"New Login ID created successfully","New Login ID Created",JOptionPane.INFORMATION_MESSAGE);
 								dispose();
-							} else {
-								JOptionPane.showMessageDialog(
-										null,
-										"Password is not strong enough",
-										"Weak Password",
-										JOptionPane.ERROR_MESSAGE
-									);
-							}
-						} else {
-							JOptionPane.showMessageDialog(
-									null,
-									"Passwords don't match",
-									"Passwords are different",
-									JOptionPane.ERROR_MESSAGE
-								);
-						}
-					} else {
-						JOptionPane.showMessageDialog(
-								null,
-								"Username Already Taken",
-								"Username already taken",
-								JOptionPane.ERROR_MESSAGE
-							);
-					}
-				} else {
-					JOptionPane.showMessageDialog(
-							null,
-							"Invalid Username. Username cannot contain these symbols: " + chars,
-							"Invalid Username",
-							JOptionPane.ERROR_MESSAGE
-						);
-				}
+							} else { JOptionPane.showMessageDialog(null,"Password is not strong enough","Weak Password",JOptionPane.ERROR_MESSAGE); }
+						} else { JOptionPane.showMessageDialog( null, "Passwords don't match", "Passwords are different", JOptionPane.ERROR_MESSAGE); }
+					} else { JOptionPane.showMessageDialog( null, "Username Already Taken", "Username already taken", JOptionPane.ERROR_MESSAGE ); }
+				} else { JOptionPane.showMessageDialog( null, "Invalid Username. Username cannot contain these symbols: " + chars, "Invalid Username", JOptionPane.ERROR_MESSAGE ); }
 			}
 		});
 	}
@@ -126,9 +92,7 @@ public class NewLoginIdFrame extends JFrame {
 		
 		for (int i=0; i<username.length(); i++) {
 			for (int j=0; j<chars.length(); j++) {
-				if (username.charAt(i) == chars.charAt(j)) {
-					return false;
-				}
+				if (username.charAt(i) == chars.charAt(j)) { return false; }
 			}
 		}
 		

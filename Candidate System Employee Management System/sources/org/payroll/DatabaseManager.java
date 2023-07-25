@@ -34,12 +34,8 @@ public class DatabaseManager {
 	
 	void initNewDatabase() {
 		try {
-			curs.executeUpdate(
-					"CREATE TABLE login_ids(id INTEGER NOT NULL PRIMARY KEY, username STRING NOT NULL, password STRING NOT NULL)"
-				);
-			curs.executeUpdate(
-					"INSERT INTO login_ids VALUES(null, \"admin\", \"password\")"
-				);
+			curs.executeUpdate( "CREATE TABLE login_ids(id INTEGER NOT NULL PRIMARY KEY, username STRING NOT NULL, password STRING NOT NULL)" );
+			curs.executeUpdate( "INSERT INTO login_ids VALUES(null, \"admin\", \"password\")" );
 			curs.executeUpdate(
 					"CREATE TABLE departments(" +
 							"id INTEGER NOT NULL PRIMARY KEY," +
@@ -64,9 +60,7 @@ public class DatabaseManager {
 						"department STRING NOT NULL" +
 					")"
 				);
-		} catch (SQLException e) {
-			System.err.println(e.getMessage());
-		}
+		} catch (SQLException e) { System.err.println(e.getMessage()); }
 	}
 	
 	public Boolean verifyLoginId(String username) {

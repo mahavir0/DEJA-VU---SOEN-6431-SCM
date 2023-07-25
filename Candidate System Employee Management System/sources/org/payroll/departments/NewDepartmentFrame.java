@@ -71,20 +71,10 @@ public class NewDepartmentFrame extends JFrame {
 					if (!Main.dbManager.existsDepartment(dep_name)) {
 						Main.dbManager.newDepartment(dep_name, basic_salary, da, hra, pf);
 						setVisible(false);
-						JOptionPane.showMessageDialog(
-								null,
-								"Created Department successfully",
-								"Department created",
-								JOptionPane.INFORMATION_MESSAGE
-							);
+						JOptionPane.showMessageDialog(null,"Created Department successfully","Department created",JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(
-								null,
-								"Department already exists",
-								"Department already exists",
-								JOptionPane.ERROR_MESSAGE
-							);
+						JOptionPane.showMessageDialog(null,"Department already exists","Department already exists",JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
 					System.err.println(e1.getMessage());

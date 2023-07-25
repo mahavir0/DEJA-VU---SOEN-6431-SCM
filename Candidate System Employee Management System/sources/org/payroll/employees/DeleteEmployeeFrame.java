@@ -52,24 +52,13 @@ public class DeleteEmployeeFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int id = Integer.parseUnsignedInt(txt_id.getText());
-					
 					if (Main.dbManager.existsEmployeeID(id)) {
 						Main.dbManager.deleteEmployee(id);
 						setVisible(false);
-						JOptionPane.showMessageDialog(
-								null,
-								"Removed Employee Successfully",
-								"Removed Employee",
-								JOptionPane.INFORMATION_MESSAGE
-							);
+						JOptionPane.showMessageDialog(null, "Removed Employee Successfully", "Removed Employee", JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(
-								null,
-								"ID does not exist",
-								"Error",
-								JOptionPane.ERROR_MESSAGE
-							);
+						JOptionPane.showMessageDialog(null, "ID does not exist", "Error", JOptionPane.ERROR_MESSAGE );
 					}
 				} catch (NumberFormatException e1) {
 					System.err.println(e1.getMessage());

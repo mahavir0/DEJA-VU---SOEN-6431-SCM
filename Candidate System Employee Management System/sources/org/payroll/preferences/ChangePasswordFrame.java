@@ -21,7 +21,6 @@ public class ChangePasswordFrame extends JFrame {
 	
 	public ChangePasswordFrame(String username) {
 		this.username = username;
-		
 		initFrame();
 		initComponents();
 		addActionListeners();
@@ -55,7 +54,6 @@ public class ChangePasswordFrame extends JFrame {
 				dispose();
 			}
 		});
-		
 		btn_OK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (Main.dbManager.verifyLoginId(username, new String(txt_oldPassword.getPassword()))) {
@@ -63,36 +61,10 @@ public class ChangePasswordFrame extends JFrame {
 						if (isStrongPassword(new String(txt_newPassword.getPassword()))) {
 							Main.dbManager.changePassword(username, new String(txt_newPassword.getPassword()));
 							setVisible(false);
-							JOptionPane.showMessageDialog(
-									null,
-									"Your login id's password is changed successfully",
-									"Password changed",
-									JOptionPane.INFORMATION_MESSAGE
-								);
-						} else {
-							JOptionPane.showMessageDialog(
-									null,
-									"Password not strong enough",
-									"Weak Password",
-									JOptionPane.ERROR_MESSAGE
-								);
-						}
-					} else {
-						JOptionPane.showMessageDialog(
-								null,
-								"Password don't match",
-								"Password Error",
-								JOptionPane.ERROR_MESSAGE
-							);
-					}
-				} else {
-					JOptionPane.showMessageDialog(
-							null,
-							"Invalid Login ID",
-							"Invalid Login ID",
-							JOptionPane.ERROR_MESSAGE
-						);
-				}
+							JOptionPane.showMessageDialog(null,"Your login id's password is changed successfully","Password changed",JOptionPane.INFORMATION_MESSAGE);
+						} else { JOptionPane.showMessageDialog(null,"Password not strong enough","Weak Password",JOptionPane.ERROR_MESSAGE); }
+					} else { JOptionPane.showMessageDialog(null,"Password don't match","Password Error",JOptionPane.ERROR_MESSAGE); }
+				} else { JOptionPane.showMessageDialog(null,"Invalid Login ID","Invalid Login ID",JOptionPane.ERROR_MESSAGE); }
 			}
 		});
 	}

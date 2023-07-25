@@ -72,20 +72,10 @@ public class UpdateEmployeeFrame extends JFrame {
 					if (Main.dbManager.existsEmployeeID(id)) {
 						Main.dbManager.updateEmployee(id, fn, ln, email, department);
 						setVisible(false);
-						JOptionPane.showMessageDialog(
-								null,
-								"ID Updated Successfully",
-								"Employee Updated",
-								JOptionPane.INFORMATION_MESSAGE
-							);
+						JOptionPane.showMessageDialog(null,"ID Updated Successfully","Employee Updated",JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(
-								null,
-								"ID doesn't exist.",
-								"Error",
-								JOptionPane.ERROR_MESSAGE
-							);
+						JOptionPane.showMessageDialog(null,"ID doesn't exist.","Error",JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
 					System.err.println(e1.getMessage());

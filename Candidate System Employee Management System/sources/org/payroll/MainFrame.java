@@ -113,97 +113,38 @@ public class MainFrame extends JFrame {
 	}
 	
 	void addActionListeners() {
-		// File Menu
-		logoutMI.addActionListener(new ActionListener() {
+		logoutMI.addActionListener(new ActionListener() { // File Menu
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				(new LoginFrame()).setVisible(true);
 				dispose();
 			}
 		});
-		
-		exitMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		
-		// Table Menu
-		reloadMI.addActionListener(new ActionListener() {
+		exitMI.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { System.exit(0); } });
+		reloadMI.addActionListener(new ActionListener() { // Table Menu
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				(new MainFrame(username)).setVisible(true);
 				dispose();
 			}
 		});
-		
-		// Employees Menu
-		newEmployeeMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new NewEmployeeFrame()).setVisible(true);
-			}
+		newEmployeeMI.addActionListener(new ActionListener() { // Employees Menu
+			public void actionPerformed(ActionEvent e) { (new NewEmployeeFrame()).setVisible(true); }
+		});	
+		updateEmployeeMI.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { (new UpdateEmployeeFrame()).setVisible(true); } });
+		deleteEmployeeMI.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { (new DeleteEmployeeFrame()).setVisible(true); } });
+		newDepartmentMI.addActionListener(new ActionListener() { // Departments Menu
+			public void actionPerformed(ActionEvent e) { (new NewDepartmentFrame()).setVisible(true); }
 		});
-		
-		updateEmployeeMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new UpdateEmployeeFrame()).setVisible(true);
-			}
+		modifyDepartmentMI.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { (new ModifyDepartmentFrame()).setVisible(true); } });
+		deleteDepartmentMI.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { (new DeleteDepartmentFrame()).setVisible(true); } });
+		newLoginIdMI.addActionListener(new ActionListener() { // Preferences Menu
+			public void actionPerformed(ActionEvent e) { (new NewLoginIdFrame()).setVisible(true); }
 		});
-		
-		deleteEmployeeMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new DeleteEmployeeFrame()).setVisible(true);
-			}
-		});
-		
-		// Departments Menu
-		newDepartmentMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new NewDepartmentFrame()).setVisible(true);
-			}
-		});
-		
-		modifyDepartmentMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new ModifyDepartmentFrame()).setVisible(true);
-			}
-		});
-		
-		deleteDepartmentMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new DeleteDepartmentFrame()).setVisible(true);
-			}
-		});
-		
-		// Preferences Menu
-		newLoginIdMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new NewLoginIdFrame()).setVisible(true);
-			}
-		});
-		
-		changePasswordMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new ChangePasswordFrame(username)).setVisible(true);
-			}
-		});
-		
-		deleteLoginIdMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				(new DeleteLoginIdFrame()).setVisible(true);
-			}
-		});
-		
-		// Help Menu
-		aboutMI.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(
-						null,
-						"Employee Payroll System\nAuthor: Sanjan Geet Singh\nEmail: sanjangeet2109s@gmail.com",
-						"About",
-						JOptionPane.INFORMATION_MESSAGE
-					);
-			}
+		changePasswordMI.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { (new ChangePasswordFrame(username)).setVisible(true); } });
+		deleteLoginIdMI.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { (new DeleteLoginIdFrame()).setVisible(true); } });
+		aboutMI.addActionListener(new ActionListener() { // Help Menu
+			public void actionPerformed(ActionEvent e) { JOptionPane.showMessageDialog( null, "Employee Payroll System\nAuthor: Sanjan Geet Singh\nEmail: sanjangeet2109s@gmail.com", "About", JOptionPane.INFORMATION_MESSAGE ); }
 		});
 	}
 	
