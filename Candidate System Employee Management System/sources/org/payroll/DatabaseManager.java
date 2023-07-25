@@ -60,7 +60,9 @@ public class DatabaseManager {
 						"department STRING NOT NULL" +
 					")"
 				);
-		} catch (SQLException e) { System.err.println(e.getMessage()); }
+		} catch (SQLException e) { 
+			System.err.println(e.getMessage()); 
+		}
 	}
 	
 	public Boolean verifyLoginId(String username) {
