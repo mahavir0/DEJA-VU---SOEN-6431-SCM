@@ -12,14 +12,14 @@ public class NewLoginIdFrame extends JFrame {
 	
 	String chars = " ^&\\/|`~";
 	
-	String uppercase_alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	String lowercase_alphabets = "abcdefghijklmnopqrstuvwxyz";
+	String uppercaseAlphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	String lowercaseAlphabets = "abcdefghijklmnopqrstuvwxyz";
 	String numbers = "0123456789";
 	
-	JLabel lbl_username, lbl_newPassword, lbl_repeatPassword;
-	JTextField txt_username;
-	JPasswordField txt_newPassword, txt_repeatPassword;
-	JButton btn_cancel, btn_create;
+	JLabel lblUsername, lblNewPassword, lblRepeatPassword;
+	JTextField txtUsername;
+	JPasswordField txtNewPassword, txtRepeatPassword;
+	JButton btnCancel, btnCreate;
 	
 	public NewLoginIdFrame() {
 		initFrame();
@@ -37,30 +37,30 @@ public class NewLoginIdFrame extends JFrame {
 	}
 	
 	void initComponents() {
-		lbl_username = new JLabel("              Username: ");
-		txt_username = new JTextField(18);
-		lbl_newPassword = new JLabel("     New Password: ");
-		txt_newPassword = new JPasswordField(18);
-		lbl_repeatPassword = new JLabel("Repeat Password: ");
-		txt_repeatPassword = new JPasswordField(18);
-		btn_cancel = new JButton("Cancel");
-		btn_create = new JButton("Create");
+		lblUsername = new JLabel("              Username: ");
+		txtUsername = new JTextField(18);
+		lblNewPassword = new JLabel("     New Password: ");
+		txtNewPassword = new JPasswordField(18);
+		lblRepeatPassword = new JLabel("Repeat Password: ");
+		txtRepeatPassword = new JPasswordField(18);
+		btnCancel = new JButton("Cancel");
+		btnCreate = new JButton("Create");
 	}
 	
 	void addActionListeners() {
-		btn_cancel.addActionListener(new ActionListener() {
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
-		btn_create.addActionListener(new ActionListener() {
+		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (isUsernameValid()) {
-					if (!Main.dbManager.verifyLoginId(txt_username.getText())) {
-						if (Arrays.equals(txt_newPassword.getPassword(), txt_repeatPassword.getPassword())) {
+					if (!Main.dbManager.verifyLoginId(txtUsername.getText())) {
+						if (Arrays.equals(txtNewPassword.getPassword(), txtRepeatPassword.getPassword())) {
 							if (isStrongPassword()) {
-								Main.dbManager.createLoginId(txt_username.getText(), new String(txt_newPassword.getPassword()));
+								Main.dbManager.createLoginId(txtUsername.getText(), new String(txtNewPassword.getPassword()));
 								setVisible(false);
 								JOptionPane.showMessageDialog(null,"New Login ID created successfully","New Login ID Created",JOptionPane.INFORMATION_MESSAGE);
 								dispose();
@@ -81,18 +81,18 @@ public class NewLoginIdFrame extends JFrame {
 	}
 	
 	void addComponentsToFrame() {
-		add(lbl_username);
-		add(txt_username);
-		add(lbl_newPassword);
-		add(txt_newPassword);
-		add(lbl_repeatPassword);
-		add(txt_repeatPassword);
-		add(btn_cancel);
-		add(btn_create);
+		add(lblUsername);
+		add(txtUsername);
+		add(lblNewPassword);
+		add(txtNewPassword);
+		add(lblRepeatPassword);
+		add(txtRepeatPassword);
+		add(btnCancel);
+		add(btnCreate);
 	}
 	
 	Boolean isUsernameValid() {
-		String username = txt_username.getText();
+		String username = txtUsername.getText();
 		
 		if (username.length() < 1) {
 			return false;
@@ -110,7 +110,7 @@ public class NewLoginIdFrame extends JFrame {
 	}
 	
 	Boolean isStrongPassword() {
-		String password = new String(txt_newPassword.getPassword());
+		String password = new String(txtNewPassword.getPassword());
 		
 		if ((password.length() > 6) &&
 			(containsUppercase(password)) &&
@@ -124,8 +124,8 @@ public class NewLoginIdFrame extends JFrame {
 	
 	Boolean containsUppercase(String password) {
 		for (int i=0; i<password.length(); i++) {
-			for (int j=0; j<uppercase_alphabets.length(); j++) {
-				if (password.charAt(i) == uppercase_alphabets.charAt(j)) {
+			for (int j=0; j<uppercaseAlphabets.length(); j++) {
+				if (password.charAt(i) == uppercaseAlphabets.charAt(j)) {
 					return true;
 				}
 			}
@@ -135,8 +135,8 @@ public class NewLoginIdFrame extends JFrame {
 	
 	Boolean containsLowercase(String password) {
 		for (int i=0; i<password.length(); i++) {
-			for (int j=0; j<lowercase_alphabets.length(); j++) {
-				if (password.charAt(i) == lowercase_alphabets.charAt(j)) {
+			for (int j=0; j<lowercaseAlphabets.length(); j++) {
+				if (password.charAt(i) == lowercaseAlphabets.charAt(j)) {
 					return true;
 				}
 			}

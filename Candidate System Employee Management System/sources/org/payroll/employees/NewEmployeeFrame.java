@@ -12,10 +12,10 @@ public class NewEmployeeFrame extends JFrame {
 
 	ArrayList<String> departments = Main.dbManager.getListOfDepartments();
 	
-	JLabel lbl_fn, lbl_ln, lbl_em, lbl_department;
-	JTextField txt_fn, txt_ln, txt_em;
-	JComboBox<String> txt_department;
-	JButton btn_cancel, btn_create;
+	JLabel lblFirstName, lblLastName, lblEmail, lblDepartment;
+	JTextField txtFirstName, txtLastName, txtEmail;
+	JComboBox<String> txtDepartment;
+	JButton btnCancel, btnCreate;
 	
 	public NewEmployeeFrame() {
 		initFrame();
@@ -35,32 +35,32 @@ public class NewEmployeeFrame extends JFrame {
 	}
 	
 	void initComponents() {
-		lbl_fn = new JLabel			("First Name: ");
-		lbl_ln = new JLabel			("Last Name: ");
-		lbl_em = new JLabel			("          Email: ");
-		lbl_department = new JLabel	("      Department: ");
-		txt_fn = new JTextField(18);
-		txt_ln = new JTextField(18);
-		txt_em = new JTextField(18);
-		txt_department = new JComboBox<String>(departments.toArray(new String[departments.size()]));
-		btn_cancel = new JButton("Cancel");
-		btn_create = new JButton("Create");
+		lblFirstName = new JLabel			("First Name: ");
+		lblLastName = new JLabel			("Last Name: ");
+		lblEmail = new JLabel			("          Email: ");
+		lblDepartment = new JLabel	("      Department: ");
+		txtFirstName = new JTextField(18);
+		txtLastName = new JTextField(18);
+		txtEmail = new JTextField(18);
+		txtDepartment = new JComboBox<String>(departments.toArray(new String[departments.size()]));
+		btnCancel = new JButton("Cancel");
+		btnCreate = new JButton("Create");
 	}
 	
 	void configureComponents() {
 	}
 	
 	void addActionListeners() {
-		btn_cancel.addActionListener(new ActionListener() {
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
 		
-		btn_create.addActionListener(new ActionListener() {
+		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main.dbManager.createEmployee(txt_fn.getText(), txt_ln.getText(), txt_em.getText(), txt_department.getSelectedItem().toString());
+				Main.dbManager.createEmployee(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtDepartment.getSelectedItem().toString());
 				setVisible(false);
 				JOptionPane.showMessageDialog(
 						null,
@@ -74,15 +74,15 @@ public class NewEmployeeFrame extends JFrame {
 	}
 	
 	void addComponentsToFrame() {
-		add(lbl_fn);
-		add(txt_fn);
-		add(lbl_ln);
-		add(txt_ln);
-		add(lbl_em);
-		add(txt_em);
-		add(lbl_department);
-		add(txt_department);
-		add(btn_cancel);
-		add(btn_create);
+		add(lblFirstName);
+		add(txtFirstName);
+		add(lblLastName);
+		add(txtLastName);
+		add(lblEmail);
+		add(txtEmail);
+		add(lblDepartment);
+		add(txtDepartment);
+		add(btnCancel);
+		add(btnCreate);
 	}
 }

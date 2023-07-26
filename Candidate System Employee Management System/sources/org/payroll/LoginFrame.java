@@ -8,10 +8,10 @@ public class LoginFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	JLabel lbl_info, lbl_username, lbl_password;
-	JButton btn_login, btn_exit;
-	JTextField txt_username;
-	JPasswordField txt_password;
+	JLabel lblInfo, lblUsername, lblPassword;
+	JButton btnLogin, btnExit;
+	JTextField txtUsername;
+	JPasswordField txtPassword;
 	
 	public LoginFrame() {
 		initFrame();
@@ -30,44 +30,44 @@ public class LoginFrame extends JFrame {
 	}
 	
 	void initComponents() {
-		lbl_info = new JLabel("Employee Payroll System by Sanjan Geet Singh");
-		lbl_username = new JLabel("Username: ");
-		lbl_password = new JLabel("Password: ");
-		txt_username = new JTextField(18);
-		txt_password = new JPasswordField(18);
-		btn_exit = new JButton("Exit");
-		btn_login = new JButton("Login");
+		lblInfo = new JLabel("Employee Payroll System by Sanjan Geet Singh");
+		lblUsername = new JLabel("Username: ");
+		lblPassword = new JLabel("Password: ");
+		txtUsername = new JTextField(18);
+		txtPassword = new JPasswordField(18);
+		btnExit = new JButton("Exit");
+		btnLogin = new JButton("Login");
 	}
 	
 	void addActionListeners() {
-		btn_exit.addActionListener(new ActionListener() {
+		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
 		
-		btn_login.addActionListener(new ActionListener() {
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (Main.dbManager.verifyLoginId(txt_username.getText(), new String(txt_password.getPassword()))) {
-					LoginSuccessful();
+				if (Main.dbManager.verifyLoginId(txtUsername.getText(), new String(txtPassword.getPassword()))) {
+					loginSuccessful();
 				} else {
-					LoginFailed();
+					loginFailed();
 				}
 			}
 		});
 	}
 	
 	void addComponentsToFrame() {
-		add(lbl_info);
-		add(lbl_username);
-		add(txt_username);
-		add(lbl_password);
-		add(txt_password);
-		add(btn_exit);
-		add(btn_login);
+		add(lblInfo);
+		add(lblUsername);
+		add(txtUsername);
+		add(lblPassword);
+		add(txtPassword);
+		add(btnExit);
+		add(btnLogin);
 	}
 	
-	void LoginSuccessful() {
+	void loginSuccessful() {
 		JOptionPane.showMessageDialog(
 				null,
 				"Login Successful",
@@ -76,11 +76,11 @@ public class LoginFrame extends JFrame {
 			);
 		
 		setVisible(false);
-		(new MainFrame(txt_username.getText())).setVisible(true);
+		(new MainFrame(txtUsername.getText())).setVisible(true);
 		dispose();
 	}
 	
-	void LoginFailed() {
+	void loginFailed() {
 		JOptionPane.showMessageDialog(
 				null,
 				"Wrong username or password",
@@ -88,7 +88,7 @@ public class LoginFrame extends JFrame {
 				JOptionPane.ERROR_MESSAGE
 			);
 		
-		txt_username.setText("");
-		txt_password.setText("");
+		txtUsername.setText("");
+		txtPassword.setText("");
 	}
 }

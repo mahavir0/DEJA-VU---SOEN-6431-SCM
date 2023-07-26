@@ -9,9 +9,9 @@ public class DeleteEmployeeFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
-	JLabel lbl_id;
-	JTextField txt_id;
-	JButton btn_cancel, btn_delete;
+	JLabel lblId;
+	JTextField txtId;
+	JButton btnCancel, btnDelete;
 	
 	public DeleteEmployeeFrame() {
 		initFrame();
@@ -31,27 +31,27 @@ public class DeleteEmployeeFrame extends JFrame {
 	}
 	
 	void initComponents() {
-		lbl_id = new JLabel("ID: ");
-		txt_id = new JTextField(18);
-		btn_cancel = new JButton("Cancel");
-		btn_delete = new JButton("Delete");
+		lblId = new JLabel("ID: ");
+		txtId = new JTextField(18);
+		btnCancel = new JButton("Cancel");
+		btnDelete = new JButton("Delete");
 	}
 	
 	void configureComponents() {
 	}
 	
 	void addActionListeners() {
-		btn_cancel.addActionListener(new ActionListener() {
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
 		
-		btn_delete.addActionListener(new ActionListener() {
+		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int id = Integer.parseUnsignedInt(txt_id.getText());
+					int id = Integer.parseUnsignedInt(txtId.getText());
 					if (Main.dbManager.existsEmployeeID(id)) {
 						Main.dbManager.deleteEmployee(id);
 						setVisible(false);
@@ -68,9 +68,9 @@ public class DeleteEmployeeFrame extends JFrame {
 	}
 	
 	void addComponentsToFrame() {
-		add(lbl_id);
-		add(txt_id);
-		add(btn_cancel);
-		add(btn_delete);
+		add(lblId);
+		add(txtId);
+		add(btnCancel);
+		add(btnDelete);
 	}
 }

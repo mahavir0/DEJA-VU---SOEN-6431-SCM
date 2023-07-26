@@ -12,9 +12,9 @@ public class DeleteDepartmentFrame extends JFrame {
 	
 	ArrayList<String> departments = Main.dbManager.getListOfDepartments();
 	
-	JLabel lbl_dep_name;
+	JLabel lblDepartmentName;
 	JComboBox<String> combobox;
-	JButton btn_cancel, btn_delete;
+	JButton btnCancel, btnDelete;
 	
 	public DeleteDepartmentFrame() {
 		initFrame();
@@ -33,21 +33,21 @@ public class DeleteDepartmentFrame extends JFrame {
 	}
 	
 	void initComponents() {
-		lbl_dep_name = new JLabel("Department Name: ");
+		lblDepartmentName = new JLabel("Department Name: ");
 		combobox = new JComboBox<String>(departments.toArray(new String[departments.size()]));
-		btn_cancel = new JButton("Cancel");
-		btn_delete = new JButton("Delete");
+		btnCancel = new JButton("Cancel");
+		btnDelete = new JButton("Delete");
 	}
 	
 	void addActionListeners() {
-		btn_cancel.addActionListener(new ActionListener() {
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
 		
-		btn_delete.addActionListener(new ActionListener() {
+		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Main.dbManager.deleteDepartment(combobox.getSelectedItem().toString());
 				setVisible(false);
@@ -57,9 +57,9 @@ public class DeleteDepartmentFrame extends JFrame {
 	}
 	
 	void addComponentsToFrame() {
-		add(lbl_dep_name);
+		add(lblDepartmentName);
 		add(combobox);
-		add(btn_cancel);
-		add(btn_delete);
+		add(btnCancel);
+		add(btnDelete);
 	}
 }

@@ -12,10 +12,10 @@ public class UpdateEmployeeFrame extends JFrame {
 
 	ArrayList<String> departments = Main.dbManager.getListOfDepartments();
 	
-	JLabel lbl_id, lbl_fn, lbl_ln, lbl_em, lbl_department;
-	JTextField txt_id, txt_fn, txt_ln, txt_em;
-	JComboBox<String> txt_department;
-	JButton btn_cancel, btn_update;
+	JLabel lblId, lblFirstName, lblLastName, lblEmail, lblDepartment;
+	JTextField txtId, txtFirstName, txtLastName, txtEmail;
+	JComboBox<String> txtDepartment;
+	JButton btnCancel, btnUpdate;
 	
 	public UpdateEmployeeFrame() {
 		initFrame();
@@ -35,39 +35,39 @@ public class UpdateEmployeeFrame extends JFrame {
 	}
 	
 	void initComponents() {
-		lbl_id = new JLabel			("                ID: ");
-		lbl_fn = new JLabel			("First Name: ");
-		lbl_ln = new JLabel			("Last Name: ");
-		lbl_em = new JLabel			("          Email: ");
-		lbl_department = new JLabel	("      Department: ");
-		txt_id = new JTextField(18);
-		txt_fn = new JTextField(18);
-		txt_ln = new JTextField(18);
-		txt_em = new JTextField(18);
-		txt_department = new JComboBox<String>(departments.toArray(new String[departments.size()]));
-		btn_cancel = new JButton("Cancel");
-		btn_update = new JButton("Update");
+		lblId = new JLabel			("                ID: ");
+		lblFirstName = new JLabel			("First Name: ");
+		lblLastName = new JLabel			("Last Name: ");
+		lblEmail = new JLabel			("          Email: ");
+		lblDepartment = new JLabel	("      Department: ");
+		txtId = new JTextField(18);
+		txtFirstName = new JTextField(18);
+		txtLastName = new JTextField(18);
+		txtEmail = new JTextField(18);
+		txtDepartment = new JComboBox<String>(departments.toArray(new String[departments.size()]));
+		btnCancel = new JButton("Cancel");
+		btnUpdate = new JButton("Update");
 	}
 	
 	void configureComponents() {
 	}
 	
 	void addActionListeners() {
-		btn_cancel.addActionListener(new ActionListener() {
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
 		
-		btn_update.addActionListener(new ActionListener() {
+		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int id = Integer.parseInt(txt_id.getText());
-					String fn = txt_fn.getText();
-					String ln = txt_ln.getText();
-					String email = txt_em.getText();
-					String department = txt_department.getSelectedItem().toString();
+					int id = Integer.parseInt(txtId.getText());
+					String fn = txtFirstName.getText();
+					String ln = txtLastName.getText();
+					String email = txtEmail.getText();
+					String department = txtDepartment.getSelectedItem().toString();
 					
 					if (Main.dbManager.existsEmployeeID(id)) {
 						Main.dbManager.updateEmployee(id, fn, ln, email, department);
@@ -85,17 +85,17 @@ public class UpdateEmployeeFrame extends JFrame {
 	}
 	
 	void addComponentsToFrame() {
-		add(lbl_id);
-		add(txt_id);
-		add(lbl_fn);
-		add(txt_fn);
-		add(lbl_ln);
-		add(txt_ln);
-		add(lbl_em);
-		add(txt_em);
-		add(lbl_department);
-		add(txt_department);
-		add(btn_cancel);
-		add(btn_update);
+		add(lblId);
+		add(txtId);
+		add(lblFirstName);
+		add(txtFirstName);
+		add(lblLastName);
+		add(txtLastName);
+		add(lblEmail);
+		add(txtEmail);
+		add(lblDepartment);
+		add(txtDepartment);
+		add(btnCancel);
+		add(btnUpdate);
 	}
 }

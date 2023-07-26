@@ -11,13 +11,13 @@ public class ChangePasswordFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	String username;
-	String uppercase_alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	String lowercase_alphabets = "abcdefghijklmnopqrstuvwxyz";
+	String uppercaseAlphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	String lowercaseAlphabets = "abcdefghijklmnopqrstuvwxyz";
 	String numbers = "0123456789";
 	
-	JLabel lbl_oldPassword, lbl_newPassword, lbl_repeatPassword;
-	JPasswordField txt_oldPassword, txt_newPassword, txt_repeatPassword;
-	JButton btn_cancel, btn_OK;
+	JLabel lblOldPassword, lblNewPassword, lblRepeatPassword;
+	JPasswordField txtOldPassword, txtNewPassword, txtRepeatPassword;
+	JButton btnCancel, btnOK;
 	
 	public ChangePasswordFrame(String username) {
 		this.username = username;
@@ -37,29 +37,29 @@ public class ChangePasswordFrame extends JFrame {
 	}
 	
 	void initComponents() {
-		lbl_oldPassword = new JLabel("      Old Password: ");
-		lbl_newPassword = new JLabel("     New Password: ");
-		lbl_repeatPassword = new JLabel("Repeat Password: ");
-		txt_oldPassword = new JPasswordField(20);
-		txt_newPassword = new JPasswordField(20);
-		txt_repeatPassword = new JPasswordField(20);
-		btn_cancel = new JButton("Cancel");
-		btn_OK = new JButton("OK");
+		lblOldPassword = new JLabel("      Old Password: ");
+		lblNewPassword = new JLabel("     New Password: ");
+		lblRepeatPassword = new JLabel("Repeat Password: ");
+		txtOldPassword = new JPasswordField(20);
+		txtNewPassword = new JPasswordField(20);
+		txtRepeatPassword = new JPasswordField(20);
+		btnCancel = new JButton("Cancel");
+		btnOK = new JButton("OK");
 	}
 	
 	void addActionListeners() {
-		btn_cancel.addActionListener(new ActionListener() {
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
-		btn_OK.addActionListener(new ActionListener() {
+		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (Main.dbManager.verifyLoginId(username, new String(txt_oldPassword.getPassword()))) {
-					if (Arrays.equals(txt_newPassword.getPassword(), txt_repeatPassword.getPassword())) {
-						if (isStrongPassword(new String(txt_newPassword.getPassword()))) {
-							Main.dbManager.changePassword(username, new String(txt_newPassword.getPassword()));
+				if (Main.dbManager.verifyLoginId(username, new String(txtOldPassword.getPassword()))) {
+					if (Arrays.equals(txtNewPassword.getPassword(), txtRepeatPassword.getPassword())) {
+						if (isStrongPassword(new String(txtNewPassword.getPassword()))) {
+							Main.dbManager.changePassword(username, new String(txtNewPassword.getPassword()));
 							setVisible(false);
 							JOptionPane.showMessageDialog(null,"Your login id's password is changed successfully","Password changed",JOptionPane.INFORMATION_MESSAGE);
 						} else { 
@@ -76,14 +76,14 @@ public class ChangePasswordFrame extends JFrame {
 	}
 	
 	void addComponentsToFrame() {
-		add(lbl_oldPassword);
-		add(txt_oldPassword);
-		add(lbl_newPassword);
-		add(txt_newPassword);
-		add(lbl_repeatPassword);
-		add(txt_repeatPassword);
-		add(btn_cancel);
-		add(btn_OK);
+		add(lblOldPassword);
+		add(txtOldPassword);
+		add(lblNewPassword);
+		add(txtNewPassword);
+		add(lblRepeatPassword);
+		add(txtRepeatPassword);
+		add(btnCancel);
+		add(btnOK);
 	}
 	
 	Boolean isStrongPassword(String password) {
@@ -99,8 +99,8 @@ public class ChangePasswordFrame extends JFrame {
 	
 	Boolean containsUppercase(String password) {
 		for (int i=0; i<password.length(); i++) {
-			for (int j=0; j<uppercase_alphabets.length(); j++) {
-				if (password.charAt(i) == uppercase_alphabets.charAt(j)) {
+			for (int j=0; j<uppercaseAlphabets.length(); j++) {
+				if (password.charAt(i) == uppercaseAlphabets.charAt(j)) {
 					return true;
 				}
 			}
@@ -110,8 +110,8 @@ public class ChangePasswordFrame extends JFrame {
 	
 	Boolean containsLowercase(String password) {
 		for (int i=0; i<password.length(); i++) {
-			for (int j=0; j<lowercase_alphabets.length(); j++) {
-				if (password.charAt(i) == lowercase_alphabets.charAt(j)) {
+			for (int j=0; j<lowercaseAlphabets.length(); j++) {
+				if (password.charAt(i) == lowercaseAlphabets.charAt(j)) {
 					return true;
 				}
 			}

@@ -6,13 +6,13 @@ import java.util.*;
 
 public class DatabaseManager {
 	
-	String ConnectionString;
+	String connectionString;
 	
 	Connection conn;
 	Statement curs;
 	
 	public DatabaseManager(String db) {
-		ConnectionString = "jdbc:sqlite:" + db;
+		connectionString = "jdbc:sqlite:" + db;
 		
 		if (!(new File(db)).exists()) {
 			connectToDatabase();
@@ -24,7 +24,7 @@ public class DatabaseManager {
 	
 	void connectToDatabase() {
 		try {
-			conn = DriverManager.getConnection(ConnectionString);
+			conn = DriverManager.getConnection(connectionString);
 			curs = conn.createStatement();
 			curs.setQueryTimeout(30);
 		} catch (SQLException e) {
@@ -115,10 +115,10 @@ public class DatabaseManager {
 		}
 	}
 	
-	public Boolean existsDepartment(String dep_name) {
+	public Boolean existsDepartment(String departmentName) {
 		try {
 			return curs.executeQuery(
-					"SELECT * FROM departments WHERE dep_name=\"" + dep_name + "\""
+					"SELECT * FROM departments WHERE dep_name=\"" + departmentName + "\""
 				).next();
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -126,30 +126,30 @@ public class DatabaseManager {
 		return false;
 	}
 	
-	public void newDepartment(String dep_name, int basic_salary, int da_percent, int hra_percent, int pf_percent) {
-		int da = (da_percent / 100) * basic_salary;
-		int hra = (hra_percent / 100) * basic_salary;
-		int pf = (pf_percent / 100) * basic_salary;
-		int gross_salary = basic_salary + da + hra + pf;
+	public void newDepartment(String departmentName, int basicSalary, int daPercent, int hraPercent, int pfPercent) {
+		int da = (daPercent / 100) * basicSalary;
+		int hra = (hraPercent / 100) * basicSalary;
+		int pf = (pfPercent / 100) * basicSalary;
+		int grossSalary = basicSalary + da + hra + pf;
 		int epf = pf / 2;
 		int lic = epf / 2;
 		int deductions = epf + lic;
-		int net_salary = gross_salary - deductions;
+		int netSalary = grossSalary - deductions;
 		
 		try {
 			curs.executeUpdate(
 					"INSERT INTO departments VALUES(" +
 							"null," +
-							"\"" + dep_name + "\" ," +
-							Integer.toString(basic_salary) + "," +
+							"\"" + departmentName + "\" ," +
+							Integer.toString(basicSalary) + "," +
 							Integer.toString(da) + "," +
 							Integer.toString(hra) + "," +
 							Integer.toString(pf) + "," +
-							Integer.toString(gross_salary) + "," +
+							Integer.toString(grossSalary) + "," +
 							Integer.toString(epf) + "," +
 							Integer.toString(lic) + "," +
 							Integer.toString(deductions) + "," +
-							Integer.toString(net_salary) +
+							Integer.toString(netSalary) +
 					")"
 				);
 		} catch (SQLException e) {
@@ -157,22 +157,22 @@ public class DatabaseManager {
 		}
 	}
 	
-	public void deleteDepartment(String dep_name) {
+	public void deleteDepartment(String departmentName) {
 		try {
 			curs.executeUpdate(
-					"DELETE FROM departments WHERE dep_name=\"" + dep_name + "\""
+					"DELETE FROM departments WHERE dep_name=\"" + departmentName + "\""
 				);
 			curs.executeUpdate(
-					"DELETE FROM employees WHERE department=\"" + dep_name + "\""
+					"DELETE FROM employees WHERE department=\"" + departmentName + "\""
 				);
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		}
 	}
 	
-	public void updateDepartment(String dep_name, int basic_salary, int da, int hra, int pf) {
-		deleteDepartment(dep_name);
-		newDepartment(dep_name, basic_salary, da, hra, pf);
+	public void updateDepartment(String departmentName, int basicSalary, int da, int hra, int pf) {
+		deleteDepartment(departmentName);
+		newDepartment(departmentName, basicSalary, da, hra, pf);
 	}
 	
 	public ArrayList<String> getListOfDepartments() {
@@ -191,9 +191,9 @@ public class DatabaseManager {
 		return lst;
 	}
 	
-	public int getSalary(String dep_name) {
+	public int getSalary(String departmentName) {
 		try {
-			ResultSet rs = curs.executeQuery("SELECT net_salary FROM departments WHERE dep_name=\"" + dep_name + "\"");
+			ResultSet rs = curs.executeQuery("SELECT net_salary FROM departments WHERE dep_name=\"" + departmentName + "\"");
 			
 			if (rs.next()) {
 				return rs.getInt("net_salary");

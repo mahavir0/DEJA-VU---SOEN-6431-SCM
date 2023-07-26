@@ -28,7 +28,7 @@ public class MainFrame extends JFrame {
 	
 	JTable table;
 	JScrollPane scrollpane;
-	JTextField txt_loggedInAs;
+	JTextField txtLoggedInAs;
 	JMenuBar menubar;
 	JMenu fileMenu, tableMenu, employeesMenu, departmentsMenu, preferencesMenu, helpMenu;
 	JMenuItem logoutMI, exitMI;	// fileMenu
@@ -62,7 +62,7 @@ public class MainFrame extends JFrame {
 		data = Main.dbManager.getEmployees();
 		
 		menubar = new JMenuBar();
-		txt_loggedInAs = new JTextField("Logged in as " + username);
+		txtLoggedInAs = new JTextField("Logged in as " + username);
 		
 		// Menus
 		fileMenu = new JMenu("File");
@@ -109,7 +109,7 @@ public class MainFrame extends JFrame {
 	
 	void configureComponents() {
 		table.setEnabled(false);
-		txt_loggedInAs.setEditable(false);
+		txtLoggedInAs.setEditable(false);
 	}
 	
 	void addActionListeners() {
@@ -184,6 +184,6 @@ public class MainFrame extends JFrame {
 		
 		setJMenuBar(menubar);
 		add(scrollpane, BorderLayout.CENTER);
-		add(txt_loggedInAs, BorderLayout.SOUTH);
+		add(txtLoggedInAs, BorderLayout.SOUTH);
 	}
 }

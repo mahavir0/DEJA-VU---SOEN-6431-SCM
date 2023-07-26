@@ -9,9 +9,9 @@ public class NewDepartmentFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	JLabel lbl_dep_name, lbl_basic_salary, lbl_da, lbl_hra, lbl_pf;
-	JTextField txt_dep_name, txt_basic_salary, txt_da, txt_hra, txt_pf;
-	JButton btn_cancel, btn_create;
+	JLabel lblDepartmentName, lblBasicSalary, lblDA, lblHRA, lblPF;
+	JTextField txtDepartmentName, txtBasicSalary, txtDA, txtHRA, txtPF;
+	JButton btnCancel, btnCreate;
 	
 	public NewDepartmentFrame() {
 		initFrame();
@@ -31,45 +31,45 @@ public class NewDepartmentFrame extends JFrame {
 	}
 	
 	void initComponents() {
-		lbl_dep_name = new JLabel("Department Name: ");
-		lbl_basic_salary = new JLabel("           Basic Salary: ");
-		lbl_da = new JLabel("                          DA%: ");
-		lbl_hra = new JLabel("                       HRA%: ");
-		lbl_pf = new JLabel("                          PF%: ");
-		txt_dep_name = new JTextField(18);
-		txt_basic_salary = new JTextField(18);
-		txt_da = new JTextField(18);
-		txt_hra = new JTextField(18);
-		txt_pf = new JTextField(18);
-		btn_cancel = new JButton("Cancel");
-		btn_create = new JButton("Create");
+		lblDepartmentName = new JLabel("Department Name: ");
+		lblBasicSalary = new JLabel("           Basic Salary: ");
+		lblDA = new JLabel("                          DA%: ");
+		lblHRA = new JLabel("                       HRA%: ");
+		lblPF = new JLabel("                          PF%: ");
+		txtDepartmentName = new JTextField(18);
+		txtBasicSalary = new JTextField(18);
+		txtDA = new JTextField(18);
+		txtHRA = new JTextField(18);
+		txtPF = new JTextField(18);
+		btnCancel = new JButton("Cancel");
+		btnCreate = new JButton("Create");
 	}
 	
 	void configureComponents() {
-		txt_da.setText("10");
-		txt_hra.setText("14");
-		txt_pf.setText("8");
+		txtDA.setText("10");
+		txtHRA.setText("14");
+		txtPF.setText("8");
 	}
 	
 	void addActionListeners() {
-		btn_cancel.addActionListener(new ActionListener() {
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
 		
-		btn_create.addActionListener(new ActionListener() {
+		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String dep_name = txt_dep_name.getText();
-					int basic_salary = Integer.parseInt(txt_basic_salary.getText());
-					int da = Integer.parseInt(txt_da.getText());
-					int hra = Integer.parseInt(txt_hra.getText());
-					int pf = Integer.parseInt(txt_pf.getText());
+					String departmentName = txtDepartmentName.getText();
+					int basicSalary = Integer.parseInt(txtBasicSalary.getText());
+					int da = Integer.parseInt(txtDA.getText());
+					int hra = Integer.parseInt(txtHRA.getText());
+					int pf = Integer.parseInt(txtPF.getText());
 					
-					if (!Main.dbManager.existsDepartment(dep_name)) {
-						Main.dbManager.newDepartment(dep_name, basic_salary, da, hra, pf);
+					if (!Main.dbManager.existsDepartment(departmentName)) {
+						Main.dbManager.newDepartment(departmentName, basicSalary, da, hra, pf);
 						setVisible(false);
 						JOptionPane.showMessageDialog(null,"Created Department successfully","Department created",JOptionPane.INFORMATION_MESSAGE);
 						dispose();
@@ -84,17 +84,17 @@ public class NewDepartmentFrame extends JFrame {
 	}
 	
 	void addComponentsToFrame() {
-		add(lbl_dep_name);
-		add(txt_dep_name);
-		add(lbl_basic_salary);
-		add(txt_basic_salary);
-		add(lbl_da);
-		add(txt_da);
-		add(lbl_hra);
-		add(txt_hra);
-		add(lbl_pf);
-		add(txt_pf);
-		add(btn_cancel);
-		add(btn_create);
+		add(lblDepartmentName);
+		add(txtDepartmentName);
+		add(lblBasicSalary);
+		add(txtBasicSalary);
+		add(lblDA);
+		add(txtDA);
+		add(lblHRA);
+		add(txtHRA);
+		add(lblPF);
+		add(txtPF);
+		add(btnCancel);
+		add(btnCreate);
 	}
 }
