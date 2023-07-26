@@ -8,12 +8,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class DatabaseManager {
 	
 	String connectionString;
 	
 	Connection conn;
 	Statement curs;
+	
+	Logger logger = Logger.getLogger(DatabaseManager.class.getName());
 	
 	public DatabaseManager(String db) {
 		connectionString = "jdbc:sqlite:" + db;
@@ -31,8 +36,8 @@ public class DatabaseManager {
 			conn = DriverManager.getConnection(connectionString);
 			curs = conn.createStatement();
 			curs.setQueryTimeout(30);
-		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+		} catch (SQLException e1) {
+			logger.log(Level.SEVERE, "An error occurred: " + e1.getMessage(), e1);
 		}
 	}
 	
@@ -65,7 +70,7 @@ public class DatabaseManager {
 					")"
 				);
 		} catch (SQLException e) { 
-			System.err.println(e.getMessage()); 
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e); 
 		}
 	}
 	
@@ -75,7 +80,7 @@ public class DatabaseManager {
 					"SELECT * FROM login_ids WHERE username=\"" + username + "\""
 				).next();
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 		return false;
 	}
@@ -86,7 +91,7 @@ public class DatabaseManager {
 					"SELECT * FROM login_ids WHERE username=\"" + username + "\" AND password=\"" + password + "\""
 				).next();
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 		return false;
 	}
@@ -95,7 +100,7 @@ public class DatabaseManager {
 		try {
 			curs.executeUpdate("INSERT INTO login_ids VALUES(null, \"" + username + "\", \"" + password + "\")");
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 	}
 	
@@ -105,7 +110,7 @@ public class DatabaseManager {
 					"DELETE FROM login_ids WHERE username=\"" + username + "\""
 				);
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 	}
 	
@@ -115,7 +120,7 @@ public class DatabaseManager {
 					"UPDATE login_ids SET password=\"" + newPassword + "\" WHERE username=\"" + username + "\""
 				);
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 	}
 	
@@ -125,7 +130,7 @@ public class DatabaseManager {
 					"SELECT * FROM departments WHERE dep_name=\"" + departmentName + "\""
 				).next();
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 		return false;
 	}
@@ -157,7 +162,7 @@ public class DatabaseManager {
 					")"
 				);
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 	}
 	
@@ -170,7 +175,7 @@ public class DatabaseManager {
 					"DELETE FROM employees WHERE department=\"" + departmentName + "\""
 				);
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 	}
 	
@@ -189,7 +194,7 @@ public class DatabaseManager {
 				lst.add(rs.getString("dep_name"));
 			}
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 		
 		return lst;
@@ -203,7 +208,7 @@ public class DatabaseManager {
 				return rs.getInt("net_salary");
 			}
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 		return 0;
 	}
@@ -214,7 +219,7 @@ public class DatabaseManager {
 					"SELECT * FROM employees WHERE id=" + Integer.toString(id)
 				).next();
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 		return false;
 	}
@@ -229,7 +234,7 @@ public class DatabaseManager {
 					"\"" + department + "\"" +
 				")");
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 	}
 	
@@ -239,7 +244,7 @@ public class DatabaseManager {
 					"DELETE FROM employees WHERE id=" + Integer.toString(id)
 				);
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 	}
 	
@@ -254,7 +259,7 @@ public class DatabaseManager {
 					"WHERE id=" + Integer.toString(id)
 				);
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 	}
 	
@@ -280,7 +285,7 @@ public class DatabaseManager {
 				employees.add(temp);
 			}
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			logger.log(Level.SEVERE, "An error occurred: " + e.getMessage(), e);
 		}
 		
 		return employees.toArray(new Object[employees.size()][]);

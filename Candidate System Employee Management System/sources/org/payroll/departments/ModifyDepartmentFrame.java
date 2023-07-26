@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -17,6 +20,8 @@ import org.payroll.Main;
 public class ModifyDepartmentFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	
+	Logger logger = Logger.getLogger(ModifyDepartmentFrame.class.getName());
 	
 	ArrayList<String> departments = Main.dbManager.getListOfDepartments();
 	
@@ -89,7 +94,7 @@ public class ModifyDepartmentFrame extends JFrame {
 						JOptionPane.showMessageDialog(null,"Department does not exist","Department does not exist exist",JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
-					System.err.println(e1.getMessage());
+					logger.log(Level.SEVERE, "An error occurred: " + e1.getMessage(), e1);
 				}
 			}
 		});

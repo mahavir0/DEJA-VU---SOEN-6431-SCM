@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -18,6 +21,8 @@ public class UpdateEmployeeFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
+	Logger logger = Logger.getLogger(UpdateEmployeeFrame.class.getName());
+	
 	ArrayList<String> departments = Main.dbManager.getListOfDepartments();
 	
 	JLabel lblId, lblFirstName, lblLastName, lblEmail, lblDepartment;
@@ -86,7 +91,7 @@ public class UpdateEmployeeFrame extends JFrame {
 						JOptionPane.showMessageDialog(null,"ID doesn't exist.","Error",JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
-					System.err.println(e1.getMessage());
+					logger.log(Level.SEVERE, "An error occurred: " + e1.getMessage(), e1);
 				}
 			}
 		});

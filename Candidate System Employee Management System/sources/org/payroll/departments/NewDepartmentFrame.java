@@ -10,11 +10,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.payroll.Main;
 
 public class NewDepartmentFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	
+	Logger logger = Logger.getLogger(NewDepartmentFrame.class.getName());
 	
 	JLabel lblDepartmentName, lblBasicSalary, lblDA, lblHRA, lblPF;
 	JTextField txtDepartmentName, txtBasicSalary, txtDA, txtHRA, txtPF;
@@ -84,7 +89,7 @@ public class NewDepartmentFrame extends JFrame {
 						JOptionPane.showMessageDialog(null,"Department already exists","Department already exists",JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
-					System.err.println(e1.getMessage());
+					logger.log(Level.SEVERE, "An error occurred: " + e1.getMessage(), e1);
 				}
 			}
 		});
