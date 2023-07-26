@@ -1,11 +1,27 @@
 package org.payroll;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import org.payroll.preferences.*;
-import org.payroll.departments.*;
-import org.payroll.employees.*;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
+import org.payroll.departments.DeleteDepartmentFrame;
+import org.payroll.departments.ModifyDepartmentFrame;
+import org.payroll.departments.NewDepartmentFrame;
+import org.payroll.employees.DeleteEmployeeFrame;
+import org.payroll.employees.NewEmployeeFrame;
+import org.payroll.employees.UpdateEmployeeFrame;
+import org.payroll.preferences.ChangePasswordFrame;
+import org.payroll.preferences.DeleteLoginIdFrame;
+import org.payroll.preferences.NewLoginIdFrame;
 
 public class MainFrame extends JFrame {
 	

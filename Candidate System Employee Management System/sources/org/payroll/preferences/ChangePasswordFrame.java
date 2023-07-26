@@ -1,10 +1,17 @@
 package org.payroll.preferences;
 
-import javax.swing.*;
-import org.payroll.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+
+import org.payroll.Main;
 
 public class ChangePasswordFrame extends JFrame {
 	
