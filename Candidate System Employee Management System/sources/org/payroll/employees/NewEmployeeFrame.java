@@ -62,12 +62,7 @@ public class NewEmployeeFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Main.dbManager.createEmployee(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtDepartment.getSelectedItem().toString());
 				setVisible(false);
-				JOptionPane.showMessageDialog(
-						null,
-						"New Employee Added",
-						"New Employee Added",
-						JOptionPane.INFORMATION_MESSAGE
-					);
+				JOptionPane.showMessageDialog(null,"New Employee Added","New Employee Added",JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			}
 		});
