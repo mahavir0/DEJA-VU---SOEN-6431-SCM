@@ -11,22 +11,30 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/**
+ * LoginFrame class represents a GUI window for a login screen in an Employee
+ * Payroll System.
+ * It displays a window that allows the user login
+ */
 public class LoginFrame extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	JLabel lblInfo, lblUsername, lblPassword;
 	JButton btnLogin, btnExit;
 	JTextField txtUsername;
 	JPasswordField txtPassword;
-	
+
+	/**
+	 * creates a user interface for login
+	 */
 	public LoginFrame() {
 		initFrame();
 		initComponents();
 		addActionListeners();
 		addComponentsToFrame();
 	}
-	
+
 	void initFrame() {
 		setTitle("Login");
 		setSize(300, 140);
@@ -35,7 +43,7 @@ public class LoginFrame extends JFrame {
 		setResizable(false);
 		setLayout(new FlowLayout());
 	}
-	
+
 	void initComponents() {
 		lblInfo = new JLabel("Employee Payroll System by Sanjan Geet Singh");
 		lblUsername = new JLabel("Username: ");
@@ -45,15 +53,17 @@ public class LoginFrame extends JFrame {
 		btnExit = new JButton("Exit");
 		btnLogin = new JButton("Login");
 	}
-	
+
 	void addActionListeners() {
 		btnExit.addActionListener(new ActionListener() {
+			/** Action Listener for an Exit Button */
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		
+
 		btnLogin.addActionListener(new ActionListener() {
+			/** Action Listener to check weather login is succesful or not */
 			public void actionPerformed(ActionEvent e) {
 				if (Main.dbManager.verifyLoginId(txtUsername.getText(), new String(txtPassword.getPassword()))) {
 					loginSuccessful();
@@ -63,7 +73,7 @@ public class LoginFrame extends JFrame {
 			}
 		});
 	}
-	
+
 	void addComponentsToFrame() {
 		add(lblInfo);
 		add(lblUsername);
@@ -73,28 +83,26 @@ public class LoginFrame extends JFrame {
 		add(btnExit);
 		add(btnLogin);
 	}
-	
+
 	void loginSuccessful() {
 		JOptionPane.showMessageDialog(
 				null,
 				"Login Successful",
 				"Login Successful",
-				JOptionPane.INFORMATION_MESSAGE
-			);
-		
+				JOptionPane.INFORMATION_MESSAGE);
+
 		setVisible(false);
 		(new MainFrame(txtUsername.getText())).setVisible(true);
 		dispose();
 	}
-	
+
 	void loginFailed() {
 		JOptionPane.showMessageDialog(
 				null,
 				"Wrong username or password",
 				"Login Failed",
-				JOptionPane.ERROR_MESSAGE
-			);
-		
+				JOptionPane.ERROR_MESSAGE);
+
 		txtUsername.setText("");
 		txtPassword.setText("");
 	}

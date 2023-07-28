@@ -218,6 +218,10 @@ public class DatabaseManager {
 		newDepartment(departmentName, basicSalary, da, hra, pf);
 	}
 
+	/**
+	 * It initializes an ArrayList named departments and populates it with the list
+	 * of department names retrieved from the database
+	 */
 	public ArrayList<String> getListOfDepartments() {
 		ArrayList<String> lst = new ArrayList<String>();
 
@@ -313,6 +317,10 @@ public class DatabaseManager {
 		}
 	}
 
+	/**
+	 * This method retrieves all employee records from the employees table along
+	 * with their corresponding salary information.
+	 */
 	public Object[][] getEmployees() {
 		ArrayList<Object[]> employees = new ArrayList<Object[]>();
 		ResultSet rs;
