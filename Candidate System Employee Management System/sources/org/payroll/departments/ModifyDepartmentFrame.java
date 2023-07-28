@@ -17,19 +17,30 @@ import javax.swing.JTextField;
 
 import org.payroll.Main;
 
+/**
+ * ModifyDepartmentFrame class represents a GUI window for updating department
+ * settings.
+ * It displays a window that allows the user to select a department from a
+ * drop-down list (JComboBox) and update its basic salary, DA (Dearness
+ * Allowance), HRA (House Rent Allowance), and PF (Provident Fund) percentages.
+ */
 public class ModifyDepartmentFrame extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	Logger logger = Logger.getLogger(ModifyDepartmentFrame.class.getName());
-	
+
 	ArrayList<String> departments = Main.dbManager.getListOfDepartments();
-	
+
 	JLabel lblDepartmentName, lblBasicSalary, lblDA, lblHRA, lblPF;
 	JComboBox<String> txtDepartmentName;
 	JTextField txtBasicSalary, txtDA, txtHRA, txtPF;
 	JButton btnCancel, btnCreate;
-	
+
+	/**
+	 * creates a user interface for modifying a department
+	 */
+
 	public ModifyDepartmentFrame() {
 		initFrame();
 		initComponents();
@@ -37,7 +48,7 @@ public class ModifyDepartmentFrame extends JFrame {
 		addActionListeners();
 		addComponentsToFrame();
 	}
-	
+
 	void initFrame() {
 		setTitle("Update Department");
 		setSize(333, 193);
@@ -46,7 +57,7 @@ public class ModifyDepartmentFrame extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLayout(new FlowLayout());
 	}
-	
+
 	void initComponents() {
 		lblDepartmentName = new JLabel("Department Name: ");
 		lblBasicSalary = new JLabel("           Basic Salary: ");
@@ -61,22 +72,24 @@ public class ModifyDepartmentFrame extends JFrame {
 		btnCancel = new JButton("Cancel");
 		btnCreate = new JButton("Update");
 	}
-	
+
 	void configureComponents() {
 		txtDA.setText("10");
 		txtHRA.setText("14");
 		txtPF.setText("8");
 	}
-	
+
 	void addActionListeners() {
 		btnCancel.addActionListener(new ActionListener() {
+			/** Action Listener for a Cancel Button */
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
-		
+
 		btnCreate.addActionListener(new ActionListener() {
+			/** Modifying of the Department and shows errors if they exist */
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String departmentName = txtDepartmentName.getSelectedItem().toString();
@@ -84,14 +97,16 @@ public class ModifyDepartmentFrame extends JFrame {
 					int da = Integer.parseInt(txtDA.getText());
 					int hra = Integer.parseInt(txtHRA.getText());
 					int pf = Integer.parseInt(txtPF.getText());
-					
+
 					if (Main.dbManager.existsDepartment(departmentName)) {
 						Main.dbManager.updateDepartment(departmentName, basicSalary, da, hra, pf);
 						setVisible(false);
-						JOptionPane.showMessageDialog(null,"Updated department settings","Department updated",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Updated department settings", "Department updated",
+								JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(null,"Department does not exist","Department does not exist exist",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Department does not exist",
+								"Department does not exist exist", JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (NumberFormatException e1) {
 					logger.log(Level.SEVERE, "An error occurred: " + e1.getMessage(), e1);
@@ -99,7 +114,7 @@ public class ModifyDepartmentFrame extends JFrame {
 			}
 		});
 	}
-	
+
 	void addComponentsToFrame() {
 		add(lblDepartmentName);
 		add(txtDepartmentName);

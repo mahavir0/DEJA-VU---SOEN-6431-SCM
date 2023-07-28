@@ -14,6 +14,12 @@ import javax.swing.JTextField;
 
 import org.payroll.Main;
 
+/**
+ * NewEmployeeFrame class represents a GUI window for adding a new
+ * employee to a database system
+ * It displays a window that allows the user to enter the details of a new
+ * employee
+ */
 public class NewEmployeeFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
@@ -25,6 +31,9 @@ public class NewEmployeeFrame extends JFrame {
 	JComboBox<String> txtDepartment;
 	JButton btnCancel, btnCreate;
 	
+	/**
+	 * creates a user interface for adding a new employee
+	 */
 	public NewEmployeeFrame() {
 		initFrame();
 		initComponents();
@@ -60,6 +69,7 @@ public class NewEmployeeFrame extends JFrame {
 	
 	void addActionListeners() {
 		btnCancel.addActionListener(new ActionListener() {
+			/** Action Listener for a Cancel Button */
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
@@ -67,6 +77,10 @@ public class NewEmployeeFrame extends JFrame {
 		});
 		
 		btnCreate.addActionListener(new ActionListener() {
+			/**
+			 * This method that handles the user action when the "Create" button is clicked
+			 * in a graphical user interface (GUI) frame.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				Main.dbManager.createEmployee(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtDepartment.getSelectedItem().toString());
 				setVisible(false);

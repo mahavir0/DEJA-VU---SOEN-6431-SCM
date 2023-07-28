@@ -13,19 +13,28 @@ import javax.swing.JPasswordField;
 
 import org.payroll.Main;
 
+/**
+ * ChangePasswordFrame class represents a GUI window for changing password for a
+ * login ID
+ * it displays a window that allows the user to input the old password, new
+ * password, and repeat the new password for password change.
+ */
 public class ChangePasswordFrame extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	String username;
 	String uppercaseAlphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	String lowercaseAlphabets = "abcdefghijklmnopqrstuvwxyz";
 	String numbers = "0123456789";
-	
+
 	JLabel lblOldPassword, lblNewPassword, lblRepeatPassword;
 	JPasswordField txtOldPassword, txtNewPassword, txtRepeatPassword;
 	JButton btnCancel, btnOK;
-	
+
+	/**
+	 * creates a user interface for changing the password for a user
+	 */
 	public ChangePasswordFrame(String username) {
 		this.username = username;
 		initFrame();
@@ -33,7 +42,7 @@ public class ChangePasswordFrame extends JFrame {
 		addActionListeners();
 		addComponentsToFrame();
 	}
-	
+
 	void initFrame() {
 		setTitle("Change Password");
 		setSize(355, 145);
@@ -42,7 +51,7 @@ public class ChangePasswordFrame extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLayout(new FlowLayout());
 	}
-	
+
 	void initComponents() {
 		lblOldPassword = new JLabel("      Old Password: ");
 		lblNewPassword = new JLabel("     New Password: ");
@@ -53,35 +62,44 @@ public class ChangePasswordFrame extends JFrame {
 		btnCancel = new JButton("Cancel");
 		btnOK = new JButton("OK");
 	}
-	
+
 	void addActionListeners() {
 		btnCancel.addActionListener(new ActionListener() {
+			/** Action Listener for a Cancel Button */
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 			}
 		});
 		btnOK.addActionListener(new ActionListener() {
+			/**
+			 * The code handles the process of changing a login ID's password by verifying
+			 * the old password and updating it with a new one.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				if (Main.dbManager.verifyLoginId(username, new String(txtOldPassword.getPassword()))) {
 					if (Arrays.equals(txtNewPassword.getPassword(), txtRepeatPassword.getPassword())) {
 						if (isStrongPassword(new String(txtNewPassword.getPassword()))) {
 							Main.dbManager.changePassword(username, new String(txtNewPassword.getPassword()));
 							setVisible(false);
-							JOptionPane.showMessageDialog(null,"Your login id's password is changed successfully","Password changed",JOptionPane.INFORMATION_MESSAGE);
-						} else { 
-							JOptionPane.showMessageDialog(null,"Password not strong enough","Weak Password",JOptionPane.ERROR_MESSAGE); 
+							JOptionPane.showMessageDialog(null, "Your login id's password is changed successfully",
+									"Password changed", JOptionPane.INFORMATION_MESSAGE);
+						} else {
+							JOptionPane.showMessageDialog(null, "Password not strong enough", "Weak Password",
+									JOptionPane.ERROR_MESSAGE);
 						}
-					} else { 
-						JOptionPane.showMessageDialog(null,"Password don't match","Password Error",JOptionPane.ERROR_MESSAGE); 
+					} else {
+						JOptionPane.showMessageDialog(null, "Password don't match", "Password Error",
+								JOptionPane.ERROR_MESSAGE);
 					}
-				} else { 
-					JOptionPane.showMessageDialog(null,"Invalid Login ID","Invalid Login ID",JOptionPane.ERROR_MESSAGE); 
+				} else {
+					JOptionPane.showMessageDialog(null, "Invalid Login ID", "Invalid Login ID",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 	}
-	
+
 	void addComponentsToFrame() {
 		add(lblOldPassword);
 		add(txtOldPassword);
@@ -92,21 +110,21 @@ public class ChangePasswordFrame extends JFrame {
 		add(btnCancel);
 		add(btnOK);
 	}
-	
+
 	Boolean isStrongPassword(String password) {
 		if ((password.length() > 6) &&
-			(containsUppercase(password)) &&
-			(containsLowercase(password)) &&
-			(containsNumbers(password))) {
+				(containsUppercase(password)) &&
+				(containsLowercase(password)) &&
+				(containsNumbers(password))) {
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	Boolean containsUppercase(String password) {
-		for (int i=0; i<password.length(); i++) {
-			for (int j=0; j<uppercaseAlphabets.length(); j++) {
+		for (int i = 0; i < password.length(); i++) {
+			for (int j = 0; j < uppercaseAlphabets.length(); j++) {
 				if (password.charAt(i) == uppercaseAlphabets.charAt(j)) {
 					return true;
 				}
@@ -114,10 +132,10 @@ public class ChangePasswordFrame extends JFrame {
 		}
 		return false;
 	}
-	
+
 	Boolean containsLowercase(String password) {
-		for (int i=0; i<password.length(); i++) {
-			for (int j=0; j<lowercaseAlphabets.length(); j++) {
+		for (int i = 0; i < password.length(); i++) {
+			for (int j = 0; j < lowercaseAlphabets.length(); j++) {
 				if (password.charAt(i) == lowercaseAlphabets.charAt(j)) {
 					return true;
 				}
@@ -125,10 +143,10 @@ public class ChangePasswordFrame extends JFrame {
 		}
 		return false;
 	}
-	
+
 	Boolean containsNumbers(String password) {
-		for (int i=0; i<password.length(); i++) {
-			for (int j=0; j<numbers.length(); j++) {
+		for (int i = 0; i < password.length(); i++) {
+			for (int j = 0; j < numbers.length(); j++) {
 				if (password.charAt(i) == numbers.charAt(j)) {
 					return true;
 				}

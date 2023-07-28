@@ -15,6 +15,11 @@ import java.util.logging.Logger;
 
 import org.payroll.Main;
 
+/**
+ * DeleteEmployeeFrame class represents a GUI window for deleting an existing
+ * employee
+ * It displays a window that allows the user to enter the ID of the employee to be deleted.
+ */
 public class DeleteEmployeeFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
@@ -25,6 +30,9 @@ public class DeleteEmployeeFrame extends JFrame {
 	JTextField txtId;
 	JButton btnCancel, btnDelete;
 	
+	/**
+	 * creates a user interface for deleting an employee
+	 */
 	public DeleteEmployeeFrame() {
 		initFrame();
 		initComponents();
@@ -54,6 +62,7 @@ public class DeleteEmployeeFrame extends JFrame {
 	
 	void addActionListeners() {
 		btnCancel.addActionListener(new ActionListener() {
+			/** Action Listener for a Cancel Button */
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
@@ -61,6 +70,10 @@ public class DeleteEmployeeFrame extends JFrame {
 		});
 		
 		btnDelete.addActionListener(new ActionListener() {
+			/**
+			 * This method that handles the user action when the "Delete" button is clicked
+			 * in a graphical user interface (GUI) frame.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int id = Integer.parseUnsignedInt(txtId.getText());

@@ -17,6 +17,12 @@ import javax.swing.JTextField;
 
 import org.payroll.Main;
 
+/**
+ * UpdateEmployeeFrame class represents a GUI window for updating an exsiting
+ * employee in a database system
+ * It displays a window that allows the user to edit the details of an
+ * employee
+ */
 public class UpdateEmployeeFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
@@ -30,6 +36,9 @@ public class UpdateEmployeeFrame extends JFrame {
 	JComboBox<String> txtDepartment;
 	JButton btnCancel, btnUpdate;
 	
+	/**
+	 * creates a user interface for updating the fields of an employee
+	 */
 	public UpdateEmployeeFrame() {
 		initFrame();
 		initComponents();
@@ -67,6 +76,7 @@ public class UpdateEmployeeFrame extends JFrame {
 	
 	void addActionListeners() {
 		btnCancel.addActionListener(new ActionListener() {
+			/** Action Listener for a Cancel Button */
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
@@ -74,6 +84,10 @@ public class UpdateEmployeeFrame extends JFrame {
 		});
 		
 		btnUpdate.addActionListener(new ActionListener() {
+			/**
+			 * This method that handles the user action when the "Update" button is clicked
+			 * in a graphical user interface (GUI) frame.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int id = Integer.parseInt(txtId.getText());

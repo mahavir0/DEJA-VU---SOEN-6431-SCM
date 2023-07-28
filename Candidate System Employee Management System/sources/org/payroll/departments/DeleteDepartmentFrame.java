@@ -12,6 +12,10 @@ import javax.swing.JLabel;
 
 import org.payroll.Main;
 
+/**
+ * DeleteDepartmentFrame class represents a GUI window for deleting a department
+ * It displays a window that allows the user to select a department from a drop-down list (JComboBox) and delete the selected department.
+ */
 public class DeleteDepartmentFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
@@ -22,6 +26,9 @@ public class DeleteDepartmentFrame extends JFrame {
 	JComboBox<String> combobox;
 	JButton btnCancel, btnDelete;
 	
+	/**
+	 * creates a user interface for deleting a department
+	 */
 	public DeleteDepartmentFrame() {
 		initFrame();
 		initComponents();
@@ -47,6 +54,7 @@ public class DeleteDepartmentFrame extends JFrame {
 	
 	void addActionListeners() {
 		btnCancel.addActionListener(new ActionListener() {
+			/** Action Listener for a Cancel Button */
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
@@ -54,6 +62,7 @@ public class DeleteDepartmentFrame extends JFrame {
 		});
 		
 		btnDelete.addActionListener(new ActionListener() {
+			/** Action Listener for a Delete Button */
 			public void actionPerformed(ActionEvent e) {
 				Main.dbManager.deleteDepartment(combobox.getSelectedItem().toString());
 				setVisible(false);
