@@ -32,8 +32,22 @@ Team F
 |Mir Pankaj Pasad                    |✔                 |✔         |✔             |✔          |✔           |
 |Mahavir Patel                       |✔                 |✔         |✔               |✔         |✔            |
 
+## Roles and responsibilities for Deliverable 2
+
+|Name/Problem                        |Research          |Code Refactoring |Code Quality Checks|Disccusion|Documentation|
+|:----------------------------------:|:----------------:|:-------:|:-------------:|:--------:|:-----------:|
+|Preet Angad Singh Nanda             |✔                 |✔       |✔               |✔          |✔            |
+|Varun Pandey                        |✔                 |✔         |✔               |✔         |✔             | 
+|Mir Pankaj Pasad                    |✔                 |✔         |✔             |✔          |✔           |
+|Mahavir Patel                       |✔                 |✔         |✔               |✔         |✔            |
+
+
 ## TeamScale 
 
 ### Before Refactoring
 
 ![](TeamScale/Initial_Findings.png)
+
+### After Refactoring
+
+![]()
