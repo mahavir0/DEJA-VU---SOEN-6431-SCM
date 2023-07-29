@@ -50,4 +50,4 @@ Team F
 
 ### After Refactoring
 
-![](DELIVERABLE 2 (D2) REENGINEERING OPERATIONALIZATION/images/refactoring report after.jpeg)
+![](`DELIVERABLE 2 (D2) REENGINEERING OPERATIONALIZATION/images/refactoring report after.jpeg`)
